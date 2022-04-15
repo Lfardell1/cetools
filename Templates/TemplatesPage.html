@@ -1,0 +1,705 @@
+{% extends "Base.html" %} {% block content %} <style>
+    .styled-table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+  
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+  
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+  
+    .styled-table tbody tr {
+      border-bottom: thin solid #dddddd;
+    }
+  
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+  
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 3px solid darkblue;
+    }
+  </style>
+  <div class="w-full h-full p-4 m-2 overflow-x-auto">
+    <div class="flex flex-wrap p-50 ml-10 flex-row mb-100" >
+      <ul class="flex flex-wrap border-b border-gray-200">
+        <li class="mr-2">
+          <a href="#" aria-current="page" class="inline-block text-gray-500 hover:text-gray-600  hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Nat')">Natural Hazard</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50 py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-EOL')">EOL</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" aria-current="page" class="inline-block text-gray-500 hover:text-gray-600  hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-EMB')">EMB</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50 py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-HA')">Home Assist</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Theft')">Theft</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Landlord')">Landlord</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Report')">Report only</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Glass')">Glass</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-OT')">One Touch</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Transfer')">Transfer</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-General')">General</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-EN')">Exposed Notes</a>
+        </li>
+        
+      </ul>
+      </div>
+
+
+      <div id="tabs-id">
+        <div class="tab-content tab-space">
+          <div class="flex overflow-auto gap-4 p-10 h-full" id="tab-Nat">
+            <div class="w-3/5 ">
+            <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Actions: 
+- Spoke to 
+- ID met
+- io has called to lodge claim for natural hazard
+- adv io that any maintenance, wear/tear isn't covered under the policy
+- adv io that client manager will be in contact within 2-3 business days to discuss claim
+- confirm io contact details
+- adv io of excess $ 
+- adv io of claim no. 
+- adv io of makesafe process  
+              
+- Exclusions - Wear, tear and maintenance
+- Documents required - 
+- Assessment required - Yes
+              
+              
+Next Actions: 
+-Client manager to make contact with io 
+-Await BA report
+              
+excess:  
+estimate:   
+LCC: 
+              
+            </textarea>
+          </div>
+          
+          <div class="w-1/2">
+            <div class="font-sans h-20 rounded-xl"  style="font-size: 10pt">
+              <p>All natural hazard claims with contents only (E.g. power surge to fridge) are small claims with two exceptions: EMB to building items & Glass only</p>
+              <br>
+              <p>This means that if the only damage is to the motor of a building item then it is small claims </p>
+              <br>
+              <p>All natural hazard claims that require a makesafe restoration due to water damaged must be created through a <b>Do & Charge through claim center</b></p>
+              <br>
+              <p>This is because our natural hazard vendors are not normally equipped to deal with water damage unlike EOL</p>
+              <br>
+              <p><b>Natural hazard building claims are non-assessed or assessed and client managed</b></p>
+              <br>
+              <p>It's important to look out for these assessed triggers when lodging a claim </p> <br>
+              <b>Assessed Triggers:</b>
+              <br>
+              <p>
+                • Flood <br>
+                • Hail damage to the main roof <br>
+                • Mould present or damaged asbestos <br>
+                • Hardwood Floors (not floating) <br>
+                • Swimming pools, retaining walls and driveways <br>
+                • Damage to 3+ rooms <br>
+                • Extensive damage to the kitchen <br>
+                • The whole level of cupboards water damaged <br>
+                • Sewerage/Black/Grey Water damage <br>
+                • Ceiling, Wall or Roof has collapsed <br>
+                • Extensive cracking of internal walls/ceilings (not just paint) <br>
+                • Suspected Ground Movement <br>
+                • Significant damage to the roof of the house (impact, roof coming away, hail damaged roof, etc) <br>
+                • Holes in a wall or roof where you can see the outside
+              </p>
+            </div>
+          </div>
+
+        </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-EOL">
+            <div class="w-3/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Actions: 
+- Spoke to 
+- ID met
+- io called to lodge claim for water damage (EOL) 
+- io adv Plumber has already/not stopped the leak to reduce additional damages
+- adv io that repair/replacement of leaking item is not covered under the policy
+- adv io that any resultant damage caused by the leak is covered
+- adv io that we will cover the reasonable cost for exploratory work if leak is causing damage to the property
+- adv io to obtain Plumbers repair report that confirms the COD; itemised costings by exploratory work, repairing/replacing leaking item and repairing any resultant damage caused by the leak
+- adv io that if leak is caused by shower the claim will not be accepted
+- adv io that cm will be in contact within 2-3 business days to discuss claim
+- confirm io contact details
+
+- Exclusions - Wear, tear and maintenance
+- Documents required - 
+- Assessment required - Yes
+
+Next Actions: 
+- await client manager to make contact 
+- await assessment to property (confirm policy coverage) 
+- discuss outcome with io 
+- action claim accordingly 
+
+excess:  
+estimate: 
+LCC: 
+
+Sent:
+
+                
+              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl" style="font-size: 10pt">
+
+                <p><b>Escape of Liquid claims must never be declined at lodgement based on a PDS exclusion</b></p>
+                <br>
+                <p><b>If the customer has a report directly stating that the claim confirms the claim is not covered we are to lodged as without prejudice</b></p>
+                <br>
+                <p>If the claim is accepted we will cover all of the neccessary and reasonable costs for exploratory work <br>
+                  <br> If the claim is not accepted we still offer coverage for exploratory works but there is limits applicable. Check the relevent PDS for these limits </p>
+                <br>
+                <p>If there is carpets damage include the carpets as part of the building SOW </p>
+                <br>
+                <p>EOL claims will always be assessed and client managed even with just contents damage</p>
+                <br>
+                <p>Always be on the lookout for an advise the relevant exclusions for EOL and advise the customer as such</p>
+                <br>
+                <p>The most common ones are listed below:</p>
+                <br>
+                <p>
+                  • wear, tear and gradual deterioration or loss or damage as a result of a gradual
+                  process of liquid leaking, splashing, dripping or overflowing; <br><br>
+                  • loss or damage to, or caused by, a leaking shower floor or base, leaking shower
+                  cubicle walls, leaking shower glass screening or doors, leaking open shower floor
+                  areas or other wet areas
+                  • 
+                </p>
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-Transfer">
+            <div class="w-1/2 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Actions: 
+- Spoke with IO
+- ID met
+- Transferred to correct queue / Raised ACQ
+                
+- NFAT by myself
+                                
+            </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl">
+                
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-EMB">
+            <div class="w-3/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Actions: 
+- Spoke with
+- ID met
+- io called to lodge claim for EMB
+- adv io that we require a damage/repair report / Quote
+- adv io motor component is covered only and we will not pay the cost to replace the entire unit
+- adv io client manager will make contact within x business days
+- confirm io contact details
+
+- Exclusions - Wear, tear and maintenance
+- Documents required - 
+- Assessment required - 
+                
+Next Actions: 
+- client manager to make contact with io 
+- await io damage/repair report/quote submission 
+- discuss outcome with io 
+- action claim accordingly 
+                 
+excess: 
+estimate: 
+LCC: 
+
+Sent:
+                
+                
+                                
+                              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl" style="font-size: 10pt">
+                <p>EMB coverage depends on the particular policy</p>
+                <br>
+                For our Suncorp and GIO policies the EMB coverage is optional so make sure to check if they have the coverage added to their policy
+                <br>
+                <br>
+                <b>For these SUN and GIO policies the excess applicable is only $100</b>
+                <br>
+                <br>
+                It's important to remember that under EMB cover we only cover the damaged motor under certain circumstances
+                <br>
+                <br>
+                Below is some example of when we do cover more than just the motor:
+                <br>
+                <br>
+                <p>
+                  • the electric motor or compressor containing the motor; <br>
+                  • an entire sealed unit, filter, dryer and re-gassing if the electric motor is inside a sealed refrigeration or air conditioning unit;<br>
+                  • a swimming pool water pump, combined with its electric motor, if the replacement pump motor cannot be bought on its own.</p>
+                </p>
+                <br>
+                <p>EMB is coverage that can fit under different coverages sometimes. This is because we'll only cover the damaged motor. 
+                 <br> <br> For example if the item is damaged by storm damage (power surge) it would be more beneficial for the insured
+                  to have the claim lodged under natural hazards so we can cover the damage to the entire appliance instead of the just the motor
+                </p>
+                <br>
+                <p>We'll never cover the installation for submersible pumps</p>
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-HA">
+            <div class="w-3/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Actions: 
+- Spoke to 
+- ID met
+- Adv HA call out required
+- Adv of HA T&C's 
+- Adv 2 hours for labour + $50 of materials covered
+- Adv contact from Home Repair within 2 hours
+- Accepted coverage in in4mo 
+
+- Exclusions - Nil
+- Documents required - Nil
+- Assessment required - No
+                
+Next Actions: 
+- Await invoice from Home Repair 
+- Client Manager to close claim
+                
+excess: NIL
+estimate: $495
+LCC: 
+                
+                                
+                              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl" style="font-size: 10pt">
+                <p>Home Assist call outs are subject to certain terms and conditions. <br> Home asist covers the insured for 2 hours of labour and $50 of materials and supplies:
+                  A plumber, Electrician, carpenter or locksmith <br> Below is some of these listed. </p> <br>
+                <p>• specialist brand-specific knowledge, equipment and/ or components are required to complete the repair;<br>
+                • we would need to destroy or demolish property, including walls, floors or ceilings, to complete the repair; or <br>
+                • damage to or blockage of pipes has been caused by tree roots.</p> 
+                <br>
+               <p>Suncorp Insurance Home Assist is not</p>  <br>
+                • a general maintenance or preventative service; or <br>
+                • an emergency rescue or disaster response service <br>
+
+                <br>
+
+                <p>Home assist does note cover the provision or replacement of:</p>
+                (i) windows, doors, glass, tiles, carpets, fly screens and any other fittings, fixtures or ornamentation; <br>
+                (ii) fixed plumbing apparatus such as baths, sinks, taps or cisterns; <br>
+                (iii) roofing materials, roof gutters, curbing or drainpipes; <br>
+                (iv) galvanized pipes; <br>
+                (v) gas cylinders or water tanks; <br>
+                (vi) power generators or motorised units; <br>
+                (vii) light fittings, switch boards or circuit breakers; <br>
+                (viii) locks, handles, winders, remote controls, keys or key barrels; or <br>
+                (ix) parts or accessories that have been inappropriately or incorrectly fitted;
+
+                <br>
+                <br>
+
+                <p>For more information on home assist cover:</p>
+
+                <br>
+
+                <a target="_blank" href="https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-assist-terms-conditions.pdf"><button class="btn btn-light">Home Assist Terms & Conditions</button></a>
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-Theft">
+            <div class="w-3/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Theft
+Actions: 
+- Spoke with 
+- ID met
+- io has called to lodge claim for theft
+- io adv of police report #
+- adv io to send through list of stolen contents items and EOO
+- io adv entry through 
+- io adv does not have any suspects for the incident
+- adv io that client manager will be in contact within 2-3 business days to discuss claim
+- update io contact details
+- adv io makesafe process
+- adv io excess $
+- adv io of claim no. 
+
+- Exclusions - Nil
+- Documents required - Nil
+- Assessment required - No
+
+
+Next Actions: 
+- await io eoo  
+
+excess:  
+estimate: 
+LCC: 
+
+                
+                                
+                              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl" style="font-size: 10pt">
+                <p><b>Theft claims are nearly always small claims.</b></p>
+                <br>
+                <p>
+                  Normally small claims don't deal with building damage claims but the exception is with theft claims with minor building damage 
+                <br> <br> If there is damage to more than one area or door we'll path the claim as assessed 
+                </p>
+                <br>
+                <p>Theft claims will begin with asking the insured for a list of stolen items + a police report and then EOO</p>
+                <br>
+                <p>Minor damage means things like a damaged front door / windows broken or locks damaged throughout the house</p>
+                <br>
+                <p>It's important to remember that we only cover the replacement of locks that have been damaged under theft claims even if the keys have been taken</p>
+                <br>
+                <p><b>The exception to this is that some policies will offer complete locks replacement up to a dollar limit if the keys are stolen</b></p>
+                <br>
+                <p>Normally in this case we'll ask the insured to provide an invoice for the lock replacement and we will reimburse</p>
+                <br>
+                <p>Most of the time make sure to offer a makesafe to the insured with theft claims as how to the assailant gained access to the property so they normally require us</p>
+                <br>
+                <p>
+                  An assessment will normally be triggered if any item taken is over $10,000 or if there is more than 10 items
+                  <br>
+                  This doesn't automatically mean we require an assessment. If the insured can provide a comprehensive list and EOO for items and their is no ambiguity in
+                  how the assailant entered the property or whether their is coverage based on the event.
+                </p>
+                <br>
+                <p>
+                  An important thing to remember is that we only cover the insured for theft from their property. For strata / unit owners this means there is some instances 
+                  in which the theft may not be covered as it was taken from a common area of their building (Which isn't considered their insured address) such as a garage.
+                  </p>
+                  <br>
+
+                  <p>This can be a grey area and it's important to check the relevant KM pages and with a HSO if you're ever unsure</p>
+                  <br>
+                  <p>When this does occur, look to cover the insured under other coverages if possible such as portable valuables or contents temporarly removed</p>
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-Glass">
+            <div class="w-3/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Actions: 
+- Spoke with 
+- ID met 
+- io called to lodge claim for breakage of glass (item damaged) 
+- confirmed io contact details
+- adv io excess applicable $
+- adv glazier contact within 24-48 hours
+
+Job #:
+Assigned:
+
+Next Actions: 
+- await invoice
+- action claim accordingly  
+
+excess:  
+estimate:  
+LCC: 
+                
+                                
+              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl" style="font-size: 10pt">
+                <p>Ensure we are checking for XS-free glass on the insured's policy</p>
+                <br>
+                <p>Without this a lot of the time the repairs may be uneconomical</p>
+                <br>
+                <p>In the case where this is ambigious lodge a claim and ask the insured to send in a personal quote for the repair before we proceed</p>
+                <br>
+                <p>Our policies also consider ceramic (sink / toilet cistern) as glass also</p>
+                <br>
+                <p>If the insured also has contents this extends to damaged glass furniture etc.</p>
+                <br>
+                <p>We always want to be sending jobs to our suppliers first. So for glass claims always aim to send the job to one of glaziers</p>
+                <br>
+                <p>Unless IO already has a quote/invoice in which case look to one touch the claim by verbally validating the details of the documents ($2000 limit)</p>
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-OT">
+            <div class="w-3/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Action:
+- Spoke with IO
+- ID met
+- io called to lodge claim for ?? ;
+- io adv replacement/repairs already completed and paid for, small claim process applies
+- confirmed io contact details
+- adv io $ excess  
+- io adv of tax invoice details:
+Name and address of the business:
+Name ‘Tax Invoice’ written on Invoice - YES
+Invoice number: 
+Date of invoice: 
+ABN: 
+Total amount of the account including GST: 
+- Took XS payment
+- Closed claim 
+
+Next Actions:
+-Nil as claim closed
+
+excess:  
+estimate: 
+LCC: 
+                
+                                
+                              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl" style="font-size: 10pt">
+                <p>Used for one touching claims when the insured has all the documents prepared for us.</p>
+                <br>
+                <p>Always ask the insured to send in documentation</p>
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-Report">
+            <div class="w-3/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Action: 
+- Spoke with 
+- ID met
+- io called to notify incident
+- io aware no further action will take place until io call back to proceed with claims
+- io aware of claims process and $ excess 
+
+Next Action:
+- await io to call back to proceed with claim 
+
+                
+                                
+                              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl">
+              
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-EN">
+            <div class="w-4/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="90" rows="30">
+
+General after lodgement if lodgement letter has been sent:
+
+Thank you for lodging a claim with us today. We have emailed you some important next steps and contact information. For any further enquiries please call 1300 230 608
+
+General after lodgement if no lodgement letter has been sent:
+
+Thank you for lodging a claim with us today. Your client manager will be in touch to discuss your claim further. For any further enquiries please call 1300 230 608
+
+Finalising a claim (Making a payment)
+
+This claim has been finalised. Please allow 3 - 5 business days for the funds to be available in your account. For any further enquiries please call 1300 230 608
+
+Home Assist:
+
+Thank your for lodging a home assist call out. Home Repair (1300 836 229) will be in touch shortly to arrange attendance.
+
+For when Insured has to send in any documentation for the claim to progress:
+
+Thank you for lodging a claim with us today. We ask that you please send in your supporting documents as discussed to help us progress your claim further.
+
+
+                
+                                
+                              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl" style="font-size: 10pt">
+                These are some general exposed notes to use once you are done lodging a claim / finishing an enquiry
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-General">
+            <div class="w-3/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Actions:
+-Spoke with
+
+- Job #:
+- Assigned  
+
+Notification of New Claim
+- Exclusions:  Wear, tear and maintenance
+- Documents required: 
+- Assessment required: 
+
+****************************************
+
+NEXT ACTIONS:
+CM:
+-  
+****************************************
+
+XS: 
+Estimates: 
+LCC: 
+                                
+                              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl" style="font-size: 10pt">
+               General claims that don't meet criteria for the other templates
+              </div>
+            </div>
+  
+          </div>
+          <div class="hidden flex overflow-auto gap-4 p-10 h-full" id="tab-Landlord">
+            <div class="w-3/5 ">
+              <textarea class=""  style="font-size: 10pt"  name="" id="" cols="70" rows="30">
+Loss Of Rent (LOR)
+Actions: 
+- Spoke with
+- ID met
+- io adv that tenants were under a fixed rental agreement
+- io adv that tenants have been paying $ per week at the property
+- io adv has sent tenant letters to pay the defaulted rent
+- adv io that we do not cover lack of house keeping, wear/tear but we will cover any malicious damage
+- adv io first 4 weeks are not covered – CHECK POLICY
+- adv io that we will cover the fifth consecutive
+- adv io to send through rental ledger and rental agreement
+- adv io that client manager will be in contact within x business days to discuss claim
+- update io contact details
+- adv io excess $  
+
+Next Actions: 
+- client manager to contact io
+- await io rental documents 
+
+excess: 
+estimate:  
+LCC: 
+
+
+************************
+
+Landlord Malicious Damage
+
+Actions: 
+- Spoke with IO
+- ID met
+- io adv that tenants were under a fixed rental agreement
+- io adv that tenants have been paying $ per week at the property
+- io adv police report #
+- adv io that we do not cover lack of house keeping or maintenance, wear/tear but we will cover any malicious damage
+- adv io our payment will be reduced by an amount equivalent to four weeks rent at the rate payable under the current rental agreement
+- adv io to send through rental agreement and police report
+- adv io that client manager will be in contact within 2-3 business days to discuss claim
+- update io contact details
+- adv io excess $
+
+Next Actions: 
+- client manager to contact io
+- await io rental agreement  
+
+excess:   
+estimate: 
+LCC: 
+
+                
+                                
+                              </textarea>
+            </div>
+            
+            <div class="w-1/2">
+              <div class="font-sans h-20 rounded-xl">
+              
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      <script type="text/javascript">
+        function changeActiveTab(event, tabID) {
+          let element = event.target;
+          while (element.nodeName !== "A") {
+            element = element.parentNode;
+          }
+          ulElement = element.parentNode.parentNode;
+          aElements = ulElement.querySelectorAll("li > a");
+          tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
+          for (let i = 0; i < aElements.length; i++) {
+            console.log(tabContents[i]);
+            aElements[i].classList.remove("bg-white");
+            aElements[i].classList.add("bg-gray");
+            tabContents[i].classList.add("hidden");
+            tabContents[i].classList.remove("block");
+          }
+          element.classList.remove("bg-gray");
+          element.classList.add("bg-white");
+          document.getElementById(tabID).classList.remove("hidden");
+          document.getElementById(tabID).classList.add("block");
+        }
+      </script> {% endblock %}

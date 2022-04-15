@@ -1,0 +1,317 @@
+
+
+
+{% extends "Base.html" %}
+{% block content %}
+<style>
+    .loader {
+        border: 10px solid #f3f3f3; /* Light grey */
+        border-top: 10px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 2s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+</style>
+<script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+    <div class="container">
+
+
+
+    <div class="flex">
+        
+            <div class="flex-1 w-1/3 justify-center items-center p-5 ">
+                <select class="form-select" id="ClaimType" name="ClaimType" onChange=BrandChange(this.selectedIndex)>
+                    <option>AAMI</option>
+                    <option>Suncorp</option>
+                    <option>GIO</option>
+                    <option>APIA</option>
+                    <option>Shannons</option>
+                </select>
+                <br>
+                <select class="form-select" id="ClaimType" name="ClaimType" onChange=LossChange(this.selectedIndex)>
+                    <option>Natural Hazard</option>
+                    <option>EOL</option>
+                    <option>Catch all lodgement</option>
+                    <option>Landlord</option>
+                    <option>Existing</option>
+                    <option>Theft</option>
+                    <option>Major loss</option>
+                    <option>Impact</option>
+                    <option>EMB</option>
+                    <option>Home Assist</option>
+                    <option>Malicious damage</option>
+                </select>
+                <div class="mt-5 mb-10"></div>
+                    <button id="dropdownDefault" data-dropdown-toggle="dropdownid" class=" ml-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Management<svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <div id="dropdownid" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
+                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+                        <li>
+                            <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick=ChangeManagement(1)>Client Managed</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick=ChangeManagement(2)>Case Managed</a>
+                        </li>
+                        </ul>
+                    </div>
+                    <div id="CMdets">
+                    </div>
+                    <div class="loader ml-24 hidden"></div>
+                    <button type="button"  onclick=GenerateLetter() class="text-white ml-12 mt-10 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Generate</button>
+                    <a href="/download"><button type="button"  class="text-white ml-12 mt-10 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Download</button></a>
+            </div>
+            
+            <div class="flex-1 flex-col w-1/3 justify-center items-center p-5">
+
+                    <label for="policy">Policy #:  </label><input class="border" type="text" id="policy" value="HPA045673847">
+                    <label for="claim">Claim #:  </label><input class="border" type="text" id="claim" value="H036049282">
+                    <label for="address">Address:  </label><input class="border" type="text" id="address" value="17 haig st belmont nsw 2280">
+                    <label for="greeting">Greeting</label><input class="border"  type="text" id="greeting" value="Mr John Smith">
+                    <label for="ExtraInfo">Any Extra Notes</label>
+                    <textarea id="ExtraInfo"></textarea>
+            </div>
+              
+            <div class="flex flex-col  w-1/3 p-5">
+                <label>Advise we need EOO?</label><input style="" form-check-input="" id="EOO" type="checkbox" value="" onchange=Extras(1)>
+                <label>Advise we need Police Report?</label><input class="form-check-input" id="PR" type="checkbox" value="" onchange=Extras(2)>
+                <label>Advise IA is to be appointed?</label><input class="form-check-input" id="IA" type="checkbox" value="" onchange=Extras(3)>
+                <label>Advise we need Repair Report?</label><input class="form-check-input" id="RR" type="checkbox" value="" onchange=Extras(4)>
+                <label>Include XS in letter?</label><input class="form-check-input" id="XS" type="checkbox" value="" onclick=ChangeXS()>
+                <div id="XSbox">
+        
+                </div>
+            </div>
+        </div>
+
+        <div class="flex">
+
+            <div class="flex flex-col p-5">
+   
+                <label for="claim">Vendor:  </label><br><input type="text" id="V" value="RCC National" ><br>
+                <label for="claim">SLA: </label><br> <input type="text" id="VSLA" value="5 business days"><br>
+                <label for="claim">Phone: </label><br> <input type="text" id="VPhone" value="0466906134"><br>
+                <label for="claim">Purpose: </label><br> <input type="text" id="VPurpose" value="to assess your Home"><br>
+                <br>
+                <button type="button" onclick=AddJob() class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add Job</button>
+            </div>
+
+        
+        
+            <div class="flex-1 flex-col mt-20">
+                <ul id="Joblist">
+
+                </ul>
+  
+            </div>
+
+
+            
+
+    </div>
+        
+    </div>
+
+
+
+
+  
+
+
+
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    
+<script>
+
+    Jobs = [];
+    Management = 0;
+    AddXS = false;
+    PR = false;
+    EOO = false;
+    IA = false;
+    RR = false;
+    Brand = "AAMI"
+    Loss = 0
+
+    function BrandChange(i){
+        switch(i){
+            case 0:
+                Brand = "AAMI";
+                console.log("I have changed to " + Brand);
+                break;
+            case 1:
+                Brand = "Suncorp";
+                console.log("I have changed to " + Brand);
+                break;
+            case 2:
+                Brand = "GIO";
+                console.log("I have changed to " + Brand);
+                break;
+            case 3:
+                Brand = "APIA";
+                console.log("I have changed to " + Brand);
+                break;
+            case 4:
+                Brand = "Shannons";
+                console.log("I have changed to " + Brand);
+                break;
+        }
+    }
+
+    function LossChange(i){
+        Loss = i;
+    }
+
+    function AddJob(){
+        Jobs.push([document.getElementById("V").value, document.getElementById("VSLA").value,document.getElementById("VPhone").value,document.getElementById("VPurpose").value]);
+        UpdateList();
+    }
+
+    function UpdateList(){
+
+        document.getElementById("Joblist").innerHTML = ""
+
+        for (var i = 0; i < Jobs.length; i++ ){
+            console.log(Jobs[i]);
+            div = document.getElementById("Joblist");
+            listitem = document.createElement("div");
+            listitem.setAttribute('class' , 'bg-gray-300 p-10 m-4 rounded-md');
+      
+            listitem.innerHTML = "<b> Name: </b>  " + Jobs[i][0] + " <b> SLA: </b> " + Jobs[i][1] + "<b> Phone: </b> " + Jobs[i][2]+ "<b> Purpose: </b> "  + Jobs[i][3] +"  <button class='btn btn-dark' onclick=RemoveProduct("+ i +")>Delete</button>";
+            div.appendChild(listitem)
+        }
+        
+    }
+
+    function RemoveJob(i){
+        
+        Jobs.splice(i,1);
+        UpdateList();
+
+
+
+    }
+
+    function GenerateLetter(){
+        $.ajax({
+            type:'POST',
+            url:'/receive',
+            data: JSON.stringify({
+                "Brand" : Brand,
+                "Loss" : Loss,
+                "Policy" : document.getElementById("policy").value,
+                "Claim" : document.getElementById('claim').value,
+                "Address" : document.getElementById("address").value,
+                "Greeting" : document.getElementById("greeting").value,
+                "EOO":EOO,
+                "PR":PR,
+                "IA":IA,
+                "RR":RR,
+                "Managed" : Management,
+                "Management" : CMinfo(Management),
+                "XS" : XSinfo(),
+                "Vendors" : Jobs,
+                "ExtraNotes" : document.getElementById("ExtraInfo").value
+            }),
+            contentType: 'application/json',
+            dataType: "json",
+            success: function (response_data){
+                alert("Success");
+            }
+        });
+        window.onunhandledrejection = event => {
+            console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`);
+          };
+    }
+
+    function ChangeManagement(i){
+        document.getElementById("CMdets").innerHTML = "";
+        if (i == 1){
+            Management = 1;
+            document.getElementById("CMdets").innerHTML = " <div class='ml-10'><label for='CM'>Client Manager:  </label><br><input type='text' id='CM' name='CM' value='Leon'><br>  <label for='CMSLA'>SLA: </label><br> <input type='text' id='CMSLA' name='CMSLA'><br>  <label for='CMPhone' value='5 business days'>Phone: </label><br> <input type='text' id='CMPhone' name='CMPhone' value='0466906134'></div><br> ";
+        }else if(i == 2){
+            Management = 2; 
+            document.getElementById("CMdets").innerHTML = " <div class='ml-10'><label for='CMPhone'>Phone: </label><br> <input type='text' id='CMPhone' name='CMPhone'></div>";
+        }
+        console.log(Management);
+    }
+
+    function ChangeXS(){
+        if (document.getElementById("XS").checked == true){
+            AddXS = true;
+            document.getElementById("XSbox").innerHTML = "<label for='XSvalue'>excess value:  </label><br><input type='text' id='XSValue' name='XS'><br>"
+        }else if (document.getElementById("XS").checked == false){
+            AddXS = false;
+            document.getElementById("XSbox").innerHTML = "";
+        }
+    }
+
+    function CMinfo(i){
+        switch (i){
+            case 1:
+                return [ document.getElementsByName("CM")[0].value , document.getElementsByName("CMSLA")[0].value , document.getElementsByName("CMPhone")[0].value ];
+                break;
+            case 2:
+                return [document.getElementsByName("CMPhone")[0].value];
+        }
+
+    }
+
+    function XSinfo(){
+        if (AddXS == true){
+            return document.getElementsByName("XS")[0].value;
+        }else{
+            return 0;
+        }
+    }
+
+    function Extras(i){
+        EOOcheck = document.getElementById("EOO");
+        PRcheck = document.getElementById("PR");
+        IAcheck = document.getElementById("IA");
+        RRcheck = document.getElementById("RR");
+        switch (i){
+            case 1:
+                if (EOOcheck.checked == true){
+                    EOO = true;
+                }else if (EOOcheck.checked == false){
+                    EOO = false;
+                }
+                break;
+            case 2:
+                if (PRcheck.checked == true){
+                    PR = true;
+                }else if (PRcheck.checked == false){
+                    PR = false;
+                }
+                break;
+            case 3:
+                if (IAcheck.checked == true){
+                    IA = true;
+                }else if (IAcheck.checked == false){
+                    IA = false;
+                }
+                break;
+            case 4:
+                if (RRcheck.checked == true){
+                    RR = true;
+                }else if (RRcheck.checked == false){
+                    RR = false;
+                }
+                break;
+        }
+    }
+
+
+
+</script>
+{% endblock %}
+

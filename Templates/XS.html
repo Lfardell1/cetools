@@ -1,0 +1,122 @@
+
+{% extends "Base.html" %}
+{% block content %}
+
+
+
+<style>
+    .styled-table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+  
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+  
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+  
+    .styled-table tbody tr {
+      border-bottom: thin solid #dddddd;
+    }
+  
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+  
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 3px solid darkblue;
+    }
+    table td + td { border-left:thin solid black; }
+  </style>
+
+
+
+
+
+
+    <div class="w-full h-1000 p-4 m-8 overflow-y-auto">
+        <div class="flex flex-wrap min-w-0 break-words bg-white w-full mb-6">
+            <div class="w-full flex justify-center"><h2>When to apply certain excesses</h2></div>
+            <div class="w-full flex justify-center">
+            <table class="styled-table">
+
+                <tr>
+                    <td>Standard XS</td>
+                    <td>Applies in nearly all cases unless a coverage specifically says it does not. When we have both contents and building damage we'll always choose the highest one and apply it</td>
+                </tr>
+                <tr>
+                    <td>Unoccupied XS</td>
+                    <td>
+                        Unoccupied XS applies when a house has been unnocupied for more than 60 days in the policy. 
+                        occupancy is defined by staying at the property for 2 consecutive nights
+                        This applies on top of the standard XS
+                    </td>
+                </tr>
+                <tr>
+                    <td>Water</td>
+                    <td>
+                        This excess applies in addition to any other excess if the insured makes a claim for loss or damage caused by leaks in or from pipes or water containers
+                    </td>
+                </tr>
+                <tr>
+                    <td>Malicious Damage</td>
+                    <td>This will apply to any claim for malicious damage by tenants and apply on top of the standard XS</td>
+                </tr>
+                <tr>
+                    <td>Theft</td>
+                    <td>This will apply to any claim for theft by tenants and apply on top of the standard XS</td>
+                </tr>
+                <tr>
+                    <td>Earthquake and tsunami excess</td>
+                    <td>
+                        This excess applies in addition to any other excess if there is a claim for loss or damage as a result of an earthquake or tsunami
+                    </td>
+                </tr>
+                <tr>
+                    <td>Loss of Rent</td>
+                    <td>When the insured makes a claim for loss of rent - tenant default a special XS applies and no other XS applies</td>
+                </tr>
+                <tr>
+                    <td>Claims History XS</td>
+                    <td>
+                        This will sometimes show up when our policies department has decided that the insured is risky to insure (too many claims). 
+                        This normally applies when the insured has had 3 or more than 3 claims in 2-3 years but can be up to our discretion (refer to HSO)
+                        This XS will always apply on top of the standard XS <b>except for portable valuables claims</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Suncorp & GIO motor burnout $100 XS</td>
+                    <td>
+                        These policies have motor burnout as an optional extra and they have their own XS applicable
+                        There is currently an error in claim center where this doesn't show up. Always be on the lookout for this and apply when needed
+                    </td>
+                </tr>
+                <tr>
+                    <td>Portable valuables (General & Specified effects)</td>
+                    <td>Whenever an insured is claiming under portables and the standard XS does not apply</td>
+                </tr>
+                <tr>
+                    <td>Enthusiast items</td>
+                    <td>Applied when insured is <b>only</b> claiming under the additional cover 'Enthusiast items' on the shannons policy. Applies on its own</td>
+                </tr>
+                <tr>
+                    <td>Off-shore XS</td>
+                    <td>
+                        This will sometimes appear when the insured has their property insured on an island that makes it difficult / more risky to insure. This will apply on top of the standard XS
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,90 @@
+
+{% extends "Base.html" %}
+{% block content %}
+<style>
+    .styled-table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+  
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+  
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+  
+    .styled-table tbody tr {
+      border-bottom: thin solid #dddddd;
+    }
+  
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+  
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 3px solid darkblue;
+    }
+
+</style>    
+    <div class="w-full h-1000 m-8 overflow-y-auto">
+        <div class="flex content-center">
+            <div class="w-2/5 h-full ">
+                <H1>This is where the ABN search will go</H1>
+                <br>
+                <input type="text" name="" id="ABN" value="ABN" class="border w-35 h-8 p-2 m-2">
+                <a class="ml-8" onclick="Func()"><button type="button" id="check" name="check" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Check</button></a>
+
+            </div>
+                
+            <div class="w-1/2 h-full" id="">
+                <table class="styled-table">
+
+                    {% if lookup is string %}
+
+                      <tr>
+                          <td> Search an ABN for more info</td>
+                          <td> It will appear here</td>
+                      </tr>
+                    
+                    {% else %}
+                      <tr>
+                          <td>Active status: </td>
+                          <td>{{ lookup['AbnStatus'] }}</td>
+                      </tr>
+                      <tr>
+                          <td>Business name: </td>
+                          <td>{{ lookup['BusinessName'][0] }}</td>
+                      </tr>
+                      <tr>
+                          <td>Effective from: </td>
+                          <td>{{ lookup['AbnStatusEffectiveFrom'] }}</td>
+                      </tr>
+                      <tr>
+                          <td>Entity Type: </td>
+                          <td>{{ lookup['EntityTypeName'] }}</td>
+                      </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script   src="https://code.jquery.com/jquery-3.6.0.js"   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="   crossorigin="anonymous"></script>
+
+    <script>
+      function Func(){
+        value = document.getElementById("ABN").value;
+
+        window.location.href = '/ABN?ABN=' + value ;
+      }
+    </script>
+{% endblock %}

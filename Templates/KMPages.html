@@ -1,0 +1,1463 @@
+{% extends "Base.html" %} {% block content %} <style>
+    .styled-table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+  
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+  
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+  
+    .styled-table tbody tr {
+      border-bottom: thin solid #dddddd;
+    }
+  
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+  
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 3px solid darkblue;
+    }
+  </style>
+  <div class="w-full h-full p-4 m-8 overflow-y-auto">
+    <div class="flex flex-wrap p-50 ml-1ç0 flex-row mb-100" id="tabs-id">
+      <ul class="flex flex-wrap border-b border-gray-200">
+        <li class="mr-2">
+          <a href="#" aria-current="page" class="inline-block text-gray-500 hover:text-gray-600  hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Lodgement')">Lodgement</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50 py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Fulfilment')">Fulfilment</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-LossCause')">Loss Cause</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" aria-current="page" class="inline-block text-gray-500 hover:text-gray-600  hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-MJLOSS')">Major Loss</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50 py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-General')">General</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-in4mo')">In4mo</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Landlord')">Landlord</a>
+        </li>
+      </ul>
+      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+        <div class="tab-content tab-space">
+          <div class="block" id="tab-Lodgement">
+            <table class="styled-table">
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Actioning CSS claims</font>
+                </td>
+                <td>KM1074823</td>
+                <td>Talks about how to action a claim lodged online via CSS</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Actions and Next Steps</font>
+                </td>
+                <td>KM1077139</td>
+                <td>Detailed process on lodgement actions</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Asking Claim Event Questions</font>
+                </td>
+                <td>KM1073188</td>
+                <td>Guide on which questions need to be asked <span style='mso-spacerun:yes'></span>
+                </td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - BOM Site Confirmation</font>
+                </td>
+                <td>KM1147503</td>
+                <td>Check BOM for storms</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Claim Decision</font>
+                </td>
+                <td>KM1073186</td>
+                <td>Talks about the claim decision at lodgement</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Claim Notification and Lodgement Letters</font>
+                </td>
+                <td>KM1120251</td>
+                <td>Details about letters sent after lodgement</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Claim Types</font>
+                </td>
+                <td>KM1077269</td>
+                <td>Outlines different claim types (Small Claim, Non-Assessed, Assessed and Major Loss)</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">How to Lodge a Claim on an Expired or Lapsed Policy / Covernote</td>
+                <td>KM1074745</td>
+                <td class="xl65">how to lodge a claim on an expired or lapsed policy/cover note.</td>
+                <td></td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - CSS Troubleshooting</font>
+                </td>
+                <td>KM1156453</td>
+                <td>Talks about CSS troubleshooting and guides on how to use</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Event Excess Collection</font>
+                </td>
+                <td>KM1077608</td>
+                <td>Collecting excess during an event</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Exposed Notes</font>
+                </td>
+                <td>KM1077469</td>
+                <td>Process for exposed notes</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Exposed Notes Examples</font>
+                </td>
+                <td>KM1077646</td>
+                <td>Examples of exposed notes</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Fair and Reasonable Guidelines</font>
+                </td>
+                <td>KM1077651</td>
+                <td>Determine if customer's building or contents quote/invoice is F&amp;R</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement </font>
+                  <font class="font0">- Landlord Required Information</font>
+                </td>
+                <td>KM1081300</td>
+                <td>Details the requirements and definitions for landlord claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Make Safe Contact and Postcode List</font>
+                </td>
+                <td>KM1124103</td>
+                <td>Links to a spreadsheet containing makesafe vendor contacts</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Makesafe Guidelines</font>
+                </td>
+                <td>KM1070149</td>
+                <td>Guide to makesafe guidelines</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Natural Hazard Decision Tree</font>
+                </td>
+                <td>DT1130350</td>
+                <td>Decision tree for Natural Hazard claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Natural Hazard DOL review</font>
+                </td>
+                <td>KM1145604</td>
+                <td>How to check on a correct DOL for a Natural Hazard claim</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Natural Hazard Questions and Requirements</font>
+                </td>
+                <td>KM1074816</td>
+                <td>Requirements and questions for Natural Hazard sub causes</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - One Touch Criteria</font>
+                </td>
+                <td>KM1074907</td>
+                <td>One Touch claims process</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Raising a Makesafe in ClaimCenter</font>
+                </td>
+                <td>KM1075101</td>
+                <td>**Only for contents makesafes and flat glass makesafes, Building makesafes done via in4mo**</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Removal of Debris</font>
+                </td>
+                <td>KM1143859</td>
+                <td>Details removal of debris guidelines</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Report Only claims</font>
+                </td>
+                <td>KM1070128</td>
+                <td>How to lodge a report only claim</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Straight Through Processing</font>
+                </td>
+                <td>KM1075677</td>
+                <td>Talks about STP process</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Strata and Body Corporate Insurance</font>
+                </td>
+                <td>KM1074229</td>
+                <td>Guide to examples of Building/Contents for Strata claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Strata and Body Corporate Insurance</font>
+                </td>
+                <td>KM1075679</td>
+                <td>Guidelines on Strata and Body Corporate</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Temporary &amp; Emergency Accommodation Booking</font>
+                </td>
+                <td>KM1075564</td>
+                <td>How to book temp accommodation &amp; emergency acommodation</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Lodgement</font>
+                  <font class="font0"> - Temporary &amp; Emergency Accommodation Guidelines</font>
+                </td>
+                <td>KM1074671</td>
+                <td>Guide to temp accommodation &amp; emergency accommodation</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+            </table>
+          </div>
+          <div class="hidden" id="tab-Fulfilment">
+            <table class="styled-table">
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - BeValued In Scope Contents</font>
+                </td>
+                <td>KM1071548</td>
+                <td>Guidance for BeValued items - which items are in scope</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - BeValued Validation Process</font>
+                </td>
+                <td>KM1071549</td>
+                <td>BeValued detailed process</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Fulfillment - Bicycle Replacement</td>
+                <td class="xl65">
+                  <span>KM1077301</span>
+                </td>
+                <td class="xl65">arrange a bicycle validation through our supplier</td>
+                <td></td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Cash Settlement Fact Sheet Process</font>
+                </td>
+                <td>KM1139650</td>
+                <td>Talks about detailed process for CSFS</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Cash Settlement Fact Sheet Topic</font>
+                </td>
+                <td>KM1139652</td>
+                <td>Talks about CSFS and when it applies</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment </font>
+                  <font class="font0">- Cash Settlement Procedure</font>
+                </td>
+                <td>KM1073170</td>
+                <td>Detailed procedure on issuing cash settlements</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Change Claim Type</font>
+                </td>
+                <td>KM1073175</td>
+                <td>Details on how to change Claim Types</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment - </font>
+                  <font class="font0">Claim Decline Detailed Procedure</font>
+                </td>
+                <td>KM1073187</td>
+                <td>Detailed procedure on claim declinature</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Claim Finalisation</font>
+                </td>
+                <td>KM1077252</td>
+                <td>How to close claims and finalise claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Claim Withdrawal</font>
+                </td>
+                <td>KM1073189</td>
+                <td>How to withdraw a claim</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Close Jobs in ClaimCenter</font>
+                </td>
+                <td>KM1149500</td>
+                <td>How to close jobs in CC</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Do &amp; Charge Allocation for Contents</font>
+                </td>
+                <td>KM1075691</td>
+                <td>Process for authorising replacement of contents items via our supplier(s)</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Fulfilment - Paying a Tax Invoice <span style="mso-spacerun:yes">&nbsp;</span>
+                </td>
+                <td>KM1074159</td>
+                <td class="xl65">
+                  <span style="mso-spacerun:yes">&nbsp;</span>Paying invoices on claims
+                </td>
+                <td></td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Event Wet Carpet and Contents</font>
+                </td>
+                <td>KM1077619</td>
+                <td>Wet carpet process during events</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Evidence of Ownership (excludes jewellery)</font>
+                </td>
+                <td>KM1077622</td>
+                <td>Details on how to obtain EOO (excluding jewellery)</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Hearing Aid process</font>
+                </td>
+                <td>KM1072848</td>
+                <td>Hearing aids process</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - IVAA Pilot</font>
+                </td>
+                <td>KM1143550</td>
+                <td>Details on the IVAA Pilot process (incl Loupe)</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Jewellery Replacement Procedure</font>
+                </td>
+                <td>KM1074871</td>
+                <td>How to validate and fulfil jewellery claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>Fulfilment <font class="font0">- Jewellery, Gathering EOO</font>
+                </td>
+                <td>KM1108551</td>
+                <td>Evidence of ownership for jewellery claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Management Cost Payments</font>
+                </td>
+                <td>KM1075117</td>
+                <td>How to issue a payment for a Management Cost</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Refund Excess</font>
+                </td>
+                <td>KM1077626</td>
+                <td>Refunding an excess payment</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Reopening a Claim</font>
+                </td>
+                <td>KM1075425</td>
+                <td>How to reopen a claim</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Repeat Contact</font>
+                </td>
+                <td>KM1075113 <span style='mso-spacerun:yes'></span>
+                </td>
+                <td>Managing repeat contacts on Non-CE claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>Fulfilment <font class="font0">- Review Repairer Assessment Report</font>
+                </td>
+                <td>KM1075462</td>
+                <td>How to review a Building Assessment report</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment </font>
+                  <font class="font0">- Scope of Works</font>
+                </td>
+                <td>KM1075928</td>
+                <td>Adding to building/contents SOW post-lodgement</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Strata and Body Corporate Payments</font>
+                </td>
+                <td>KM1075678</td>
+                <td>Making payments on Strata and Body Corporate claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Fulfilment</font>
+                  <font class="font0"> - Updating Estimates/Reserves</font>
+                </td>
+                <td>KM1075927</td>
+                <td>How to update estimates and reserves</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+            </table>
+          </div>
+          <div class="hidden" id="tab-LossCause">
+            <table class="styled-table">
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>Loss Cause - All Loss causes</td>
+                <td>KM1070138</td>
+                <td>Details all loss causes in Home Claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause</font>
+                  <font class="font0"> - Accidental Breakage of Glass</font>
+                </td>
+                <td>KM1074628</td>
+                <td>Details about claims with the loss cause Accidental Breakage of Glass</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause </font>
+                  <font class="font0">- Documents required to progress claim</font>
+                </td>
+                <td>KM1073396</td>
+                <td>Details docs required on different claims by loss cause <span style='mso-spacerun:yes'></span>
+                </td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause</font>
+                  <font class="font0"> - Electrical Motor Burnout</font>
+                </td>
+                <td>KM1077535</td>
+                <td>Details about claims with the loss cause EMB</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause</font>
+                  <font class="font0"> - Escape of Liquid</font>
+                </td>
+                <td>KM1077549</td>
+                <td>Details about claims with the loss cause EOL</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause</font>
+                  <font class="font0"> - Fire</font>
+                </td>
+                <td>KM1074650</td>
+                <td>Details about claims with the loss cause of Fire</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause </font>
+                  <font class="font0">- Flat Glass Only claims</font>
+                </td>
+                <td>KM1072837</td>
+                <td>Guide to glass only claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause</font>
+                  <font class="font0"> - Food Spoilage</font>
+                </td>
+                <td>KM1079260</td>
+                <td>Details about claims with the loss cause Food Spoilage</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause </font>
+                  <font class="font0">- How to Change</font>
+                </td>
+                <td>KM1075635</td>
+                <td>Changing a loss cause</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause</font>
+                  <font class="font0"> - Loss or Damage by Tenants</font>
+                </td>
+                <td>KM1080400</td>
+                <td>Dealing with landlord LOR/DOR and Malicious Damage claims by tenants</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Loss Cause</font>
+                  <font class="font0"> - Natural Hazard</font>
+                </td>
+                <td>KM1074817</td>
+                <td>Details about claims with the loss cause of Natural Hazard</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+            </table>
+          </div>
+          <div class="hidden" id="tab-MJLOSS">
+            <table class="styled-table">
+              <tr height="21" style="height:16.0pt">
+                <td height="21" class="xl65" width="429" style="height:16.0pt;width:322pt">Major Loss Lodgement&nbsp;</td>
+                <td width="116" style="width:87pt">KM1037008</td>
+                <td width="985" style="width:739pt">This procedure outlines the steps to lodge a Major Loss claim.</td>
+                <td width="87" style="width:65pt"></td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Scope of Work - Major Loss</td>
+                <td class="xl65">
+                  <span style="caret-color: rgb(34, 34, 34);font-variant-caps: normal;
+                  orphans: auto;text-align:start;widows: auto;-webkit-text-size-adjust: auto;
+                  -webkit-text-stroke-width: 0px">KM1039904</span>
+                </td>
+                <td>how to update or add a Major Loss item to the Scope of Work.</td>
+                <td></td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Initiate New Claim Lodgement - Major Loss</td>
+                <td>KM1074793</td>
+                <td>
+                  <span style="mso-spacerun:yes">&nbsp;</span>More detailed overview on major loss lodgement
+                </td>
+                <td></td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Major Loss Claim Management Process</td>
+                <td>KM1074881</td>
+                <td class="xl65">
+                  <span style="caret-color: rgb(34, 34, 34);font-variant-caps: normal;
+                  orphans: auto;text-align:start;widows: auto;-webkit-text-size-adjust: auto;
+                  -webkit-text-stroke-width: 0px">Extra information on the major loss claims process</span>
+                </td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <div class="hidden" id="tab-General">
+            <table class="styled-table">
+              <tr class=xl64 height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>MPSC Landing Page</td>
+                <td class=xl64>KM1072899</td>
+                <td class=xl64>Great resource for multiple Home Claims processes</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>Complaints Handling Landing Page</td>
+                <td class=xl64>KM1081556</td>
+                <td class=xl64>Great resource for all things Complaint related</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr class=xl64 height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>CEV Landing Page</td>
+                <td class=xl64>KM1094906</td>
+                <td class=xl64>Great resource for all CEV related claims or matters</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">How to Lodge a Glass Service Quality Issue</td>
+                <td class="xl65">
+                  <span style="caret-color: rgb(34, 34, 34);font-variant-caps: normal;
+                      orphans: auto;text-align:start;widows: auto;-webkit-text-size-adjust: auto;
+                      -webkit-text-stroke-width: 0px">KM1074746</span>
+                </td>
+                <td class="xl65">how to record a quality/workmanship issue when glass only is involved.</td>
+                <td></td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">
+                  <span style="caret-color: rgb(34, 34, 34);font-variant-caps: normal;
+                      orphans: auto;text-align:start;widows: auto;-webkit-text-size-adjust: auto;
+                      -webkit-text-stroke-width: 0px">Financial Hardship - Overview and Outcomes</span>
+                </td>
+                <td>KM1072816</td>
+                <td class="xl65">Financial hardship guide</td>
+                <td></td>
+              </tr>
+              <tr class=xl64 height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>Lodgement Landing Page</td>
+                <td class=xl64>KM1081550</td>
+                <td class=xl64>Great resource for all Lodgement processes</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+              </tr>
+              <tr class=xl64 height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>Fulfilment Landing Page</td>
+                <td class=xl64>KM1081551</td>
+                <td class=xl64>Great resource for all Fulfilment processes</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Reassigning a Claim</td>
+                <td>KM1075272</td>
+                <td class="xl65">
+                  <span style="caret-color: rgb(34, 34, 34);font-variant-caps: normal;
+                      orphans: auto;text-align:start;widows: auto;-webkit-text-size-adjust: auto;
+                      -webkit-text-stroke-width: 0px">details how to reassign the claim to a different claim adjuster.</span>
+                </td>
+                <td></td>
+              </tr>
+              <tr class=xl64 height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>Outbound Landing Page</td>
+                <td class=xl64>KM1081557</td>
+                <td class=xl64>Great resource for all NONC/Outbound processes</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+                <td class=xl67>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 class=xl64 style='height:15.0pt'>PDS Landing Page</td>
+                <td class=xl64>KM1050000</td>
+                <td class=xl64>Links to all PDS <span style='mso-spacerun:yes'></span>
+                </td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Acronym List</td>
+                <td>KM1081855</td>
+                <td>Talks about different acronyms used for Home Claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Insured Address - Common Property <span style="mso-spacerun:yes">&nbsp;</span>
+                </td>
+                <td>KM1110711</td>
+                <td class="xl65">
+                  <span style="caret-color: rgb(34, 34, 34);font-variant-caps: normal;
+                      orphans: auto;text-align:start;widows: auto;-webkit-text-size-adjust: auto;
+                      -webkit-text-stroke-width: 0px">guide for when determining what would be classed as the Insured Address compared to what would be classed as Common Property.</span>
+                </td>
+                <td></td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Excess refund <span style="mso-spacerun:yes">&nbsp;</span>
+                </td>
+                <td>KM1077631</td>
+                <td class="xl65">procedure to use when you need to refund a customer's excess.</td>
+                <td></td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Requesting an Ex-Gratia</td>
+                <td>KM1101400</td>
+                <td class="xl65">
+                  <span style="caret-color: rgb(34, 34, 34);font-variant-caps: normal;
+                      orphans: auto;text-align:start;widows: auto;-webkit-text-size-adjust: auto;
+                      -webkit-text-stroke-width: 0px">when requesting an ex-gratia payment for a customer with extenuating circumstances</span>
+                </td>
+                <td></td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Extending Temporary Accommodation</td>
+                <td>KM1077648</td>
+                <td class="xl65">extending temporary accommodation.</td>
+                <td></td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">CHaaFS</font>
+                  <font class="font0"> - Claims Advice and Product Advice</font>
+                </td>
+                <td>KM1143604 <span style='mso-spacerun:yes'></span>
+                </td>
+                <td>Talks about Claims Advice and Product Advice in detail</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">CHaaFS </font>
+                  <font class="font0">- Confirmation of Transaction</font>
+                </td>
+                <td>KM1138361</td>
+                <td>Process on when to send a Confirmation of Transaction</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>ClaimCenter Activity List</td>
+                <td>KM1072372</td>
+                <td>Talks about different activities in ClaimCenter and their purpose</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Supplier</font>
+                  <font class="font0"> - Actioning and Sending Vendor Notes</font>
+                </td>
+                <td>KM1076012</td>
+                <td>Process on communicating with our panel vendors using vendor notes</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Supplier</font>
+                  <font class="font0"> - Managing Requests to Become a Suncorp Vendor</font>
+                </td>
+                <td>KM1075121</td>
+                <td>What to do when an external non-Suncorp vendor contacts us interested in becoming a vendor</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Supplier - </font>
+                  <font class="font0">Supplier Feedback Tool</font>
+                </td>
+                <td>KM1132700</td>
+                <td>Feedback for any Suncorp vendor</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Supplier - </font>
+                  <font class="font0">Supplier Matrix</font>
+                </td>
+                <td>KM1075694</td>
+                <td>Talks about which suppliers we use for different categories</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Complaints </font>
+                  <font class="font0">- Automated Outcome Letters <span style='mso-spacerun:yes'></span>
+                  </font>
+                </td>
+                <td>KM1151800</td>
+                <td>Talks about Robot Jan and when it will generate letters</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Complaints</font>
+                  <font class="font0"> - Lodging a complaint</font>
+                </td>
+                <td>KM1129605</td>
+                <td>How to capture a new complaint</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Complaints</font>
+                  <font class="font0"> - Outcome Letter Process</font>
+                </td>
+                <td>KM1112050</td>
+                <td>Talks about when to send a Complaint Outcome Letter</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Complaints</font>
+                  <font class="font0"> - Resolve a complaint</font>
+                </td>
+                <td>KM1129608</td>
+                <td>How to resolve a complaint</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Contact</font>
+                  <font class="font0"> - Contact Us 7 &amp; 14 Day Letters</font>
+                </td>
+                <td>KM1077371</td>
+                <td>Contact us process</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Contact</font>
+                  <font class="font0"> - Customer Contact Matrix</font>
+                </td>
+                <td>KM1108209</td>
+                <td>Talks about all info relating to customer communication</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Contact</font>
+                  <font class="font0"> - EasyForm SMS how to</font>
+                </td>
+                <td>KM1107352</td>
+                <td>How to send an SMS through EasyForm</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Contact</font>
+                  <font class="font0"> - EasyForm SMS templates</font>
+                </td>
+                <td>KM1107350</td>
+                <td>Templates for SMS via EasyForm</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Contact</font>
+                  <font class="font0"> - NONC Email Pilot</font>
+                </td>
+                <td>KM1151050 <span style='mso-spacerun:yes'></span>
+                </td>
+                <td>Talks about actioning NONCs where email only is required</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Contact</font>
+                  <font class="font0"> - Outbound Contact</font>
+                </td>
+                <td>KM1075118</td>
+                <td>Talks about how to manage outbound contact</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Contact</font>
+                  <font class="font0"> - Outbound Email Communication</font>
+                </td>
+                <td>KM1074927</td>
+                <td>Process on sending emails externally</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Contact</font>
+                  <font class="font0"> - Privacy Contact Identification</font>
+                </td>
+                <td>KM1077364</td>
+                <td>Outlines 3 point ID process and who is authorised on claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Essentials by AAI</td>
+                <td>KM1077602</td>
+                <td>A guide to Essentials claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Filenote Templates</td>
+                <td>KM1077653</td>
+                <td>Templates of common notes left on ClaimCenter</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Home Assist</font>
+                  <font class="font0"> - Lodgement and Converting Processes</font>
+                </td>
+                <td>KM1074684</td>
+                <td>Lodging a Home Assist callout/claim</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Home Assist </font>
+                  <font class="font0">- What is It?</font>
+                </td>
+                <td>KM1076040</td>
+                <td>Guide to Home Assist</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Leakage</td>
+                <td>KM1104909</td>
+                <td>Leakage process</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Non-Urgent Policy Changes (aka PIPA request)</td>
+                <td>KM1074841</td>
+                <td>Guide to non urgent policy amendments for all brands</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Privacy Requests </font>
+                  <font class="font0">- How to Edit, Block Out and Redact Info</font>
+                </td>
+                <td>KM1075174</td>
+                <td>How to Edit, Block Out and Redact Information on a Document for Privacy</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Privacy Requests </font>
+                  <font class="font0">- How to Edit, Block Out and Redact Info Manually</font>
+                </td>
+                <td>KM1081251</td>
+                <td>Same as above but if you don't have Adobe Acrobat access, use this</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Privacy Requests</font>
+                  <font class="font0"> - Logging a Request</font>
+                </td>
+                <td>KM1075173</td>
+                <td>How to log a privacy request in the privacy request register</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Privacy Requests </font>
+                  <font class="font0">- Privacy Categories</font>
+                </td>
+                <td>KM1075179</td>
+                <td>Categories of privacy requests</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Rectification</font>
+                  <font class="font0"> - Building</font>
+                </td>
+                <td>KM1075923</td>
+                <td>Talks about rectification proces for Building claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">Rectification</font>
+                  <font class="font0"> - Contents</font>
+                </td>
+                <td>KM1107604</td>
+                <td>Details on handling Quality Repair/Replacement issues</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Refer claim to Investigations (Fraud &amp; Intelligence)</td>
+                <td>KM1075401</td>
+                <td>How to refer a claim to F&amp;I</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Salvage Referral</td>
+                <td>KM1072171</td>
+                <td>Talks about salvage process in detail</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Stolen Keys and Replacement of Locks</td>
+                <td>KM1075674</td>
+                <td>Details when keys to property stolen</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Tax Invoice Requirements</td>
+                <td>KM1075730</td>
+                <td>Requirements for tax invoices</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Timeframes and SLAs</td>
+                <td>KM1099500</td>
+                <td>Timeframes and SLAs across Home Claims</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>Trauma Counselling</td>
+                <td>KM1075879</td>
+                <td>Outlines if you identify a customer who may need additional support</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+            </table>
+          </div>
+          <div class="hidden" id="tab-in4mo">
+            <table class="styled-table">
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">in4mo</font>
+                  <font class="font0"> - Cancelling Tasks</font>
+                </td>
+                <td>KM1110763</td>
+                <td>Talks about hwo to cancel (complete) a task in in4mo that is no longer proceeding</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">in4mo</font>
+                  <font class="font0"> - Coverage Decision</font>
+                </td>
+                <td>KM1122000</td>
+                <td>Updating coverage decision in in4mo</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">in4mo</font>
+                  <font class="font0"> - Creating and Assigning a Makesafe</font>
+                </td>
+                <td>KM1110752</td>
+                <td>Talks about how to create and assign makesafes in in4mo</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">in4mo</font>
+                  <font class="font0"> - Creating, Assigning and Approving Tasks</font>
+                </td>
+                <td>KM1111151</td>
+                <td>Talks about how to raise, complete and assign tasks in in4mo</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">in4mo</font>
+                  <font class="font0"> - Error Troubleshooting</font>
+                </td>
+                <td>KM1111150</td>
+                <td>Talks about common in4mo errors and how to rectify them</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">in4mo</font>
+                  <font class="font0"> - Reopening, Withdrawing and Closing a claim</font>
+                </td>
+                <td>KM1110772</td>
+                <td>How to close and reopen claims in in4mo</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+              <tr height=20 style='height:15.0pt'>
+                <td height=20 style='height:15.0pt'>
+                  <font class="font5">in4mo</font>
+                  <font class="font0"> - Task Creation Rules</font>
+                </td>
+                <td>KM1110777</td>
+                <td>Talks about the list of Task Creation Rules in in4mo</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+                <td class=xl68>&nbsp;</td>
+              </tr>
+            </table>
+          </div>
+          <div class="hidden" id="tab-Landlord">
+            <table class="styled-table">
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Tenant Protection <span style="mso-spacerun:yes">&nbsp;</span>
+                </td>
+                <td>KM1074672</td>
+                <td class="xl65">tenant protection guidelines</td>
+                <td></td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Landlord - Cannot be lived in or re-leased</td>
+                <td>KM1075911</td>
+                <td class="xl65" colspan="2" style="mso-ignore:colspan">guidelines for what it means if a rental home cannot be lived in or cannot be re-leased, to help determine if a customer is covered for loss of rent.</td>
+              </tr>
+              <tr height="21" style="height:16.0pt">
+                <td height="21" style="height:16.0pt">Loss of Rent - Insured Event and Prevention of Access</td>
+                <td>KM1070142</td>
+                <td class="xl65">
+                  <meta charset="UTF-8">
+                  <span style="caret-color: rgb(34, 34, 34);font-variant-caps: normal;
+                      orphans: auto;text-align:start;widows: auto;-webkit-text-size-adjust: auto;
+                      -webkit-text-stroke-width: 0px">&nbsp;follow when reviewing a claim for Loss of Rent - Insured event cover or Loss of Rent Prevention of Access cover.​</span>
+                </td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        function changeActiveTab(event, tabID) {
+          let element = event.target;
+          while (element.nodeName !== "A") {
+            element = element.parentNode;
+          }
+          ulElement = element.parentNode.parentNode;
+          aElements = ulElement.querySelectorAll("li > a");
+          tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
+          for (let i = 0; i < aElements.length; i++) {
+            aElements[i].classList.remove("bg-white");
+            aElements[i].classList.add("bg-gray");
+            tabContents[i].classList.add("hidden");
+            tabContents[i].classList.remove("block");
+          }
+          element.classList.remove("bg-gray");
+          element.classList.add("bg-white");
+          document.getElementById(tabID).classList.remove("hidden");
+          document.getElementById(tabID).classList.add("block");
+        }
+      </script> {% endblock %}

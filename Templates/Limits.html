@@ -1,0 +1,803 @@
+{% extends "Base.html" %} {% block content %} <style>
+    .styled-table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+  
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+  
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+  
+    .styled-table tbody tr {
+      border-bottom: thin solid #dddddd;
+    }
+  
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+  
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 3px solid darkblue;
+    }
+    table td + td { border-left:thin solid black; }
+  </style>
+  <div class="w-full h-full p-4 m-8 overflow-y-auto">
+    <div class="flex flex-wrap p-50 ml-1ç0 flex-row mb-100" id="tabs-id">
+      <ul class="flex flex-wrap border-b border-gray-200">
+        <li class="mr-2">
+          <a href="#" aria-current="page" class="inline-block text-gray-500 hover:text-gray-600  hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-AAMI')">AAMI</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50 py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Suncorp')">Suncorp</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-APIA')">APIA</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" aria-current="page" class="inline-block text-gray-500 hover:text-gray-600  hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Shannnons')">Shannons</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50 py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-GIO')">GIO</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-CIL')">CIL</a>
+        </li>
+        <li class="mr-2">
+          <a href="#" class="inline-block text-gray-500 hover:text-gray-600 hover:bg-gray-50  py-4 px-4 text-sm font-medium text-center" onclick="changeActiveTab(event,'tab-Vero')">Vero</a>
+        </li>
+      </ul>
+      <div class="flex justify-center min-w-0 break-words bg-white w-full mb-6">
+        <div class="tab-content tab-space">
+          <div class="block" id="tab-AAMI">
+            <table class="styled-table">
+                <th>Limits</th>
+                <th>Regular</th>
+                <th>Landlord</th>
+                <th>Strata</th>
+                <tr>
+                    <td>Tools of Trade - (Any tool used to make an income)</td>
+                    <td>$2000</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Food Spoilage</td>
+                    <td>$400</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Contents in open air</td>
+                    <td>20% of sum insured</td>
+                    <td>20% of sum insured</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Fencing
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Sealed driveways and sealed roads
+                    </td>
+                    <td>
+                        Up to 500 metres
+                    </td>
+                    <td>
+                        Up to 500 metres
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Carpet or rugs that are hand woven or hand knotted</td>
+                    <td>$2,000 per carpet or rug</td>
+                    <td></td>
+                    <td>$2,000 per carpet or rug</td>
+                </tr>
+                <tr>
+                    <td>Jewellery and watches</td>
+                    <td>$2,000 per item or set up to a total of $5,000</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Paintings, pictures, works of art, antiques, sculptures, ornaments and art objects
+                    </td>
+                    <td>
+                        $2,500 per item or set up to a total of $5,000
+                    </td>
+                    <td>
+                        Up to $2,500 for each item or set, up to $5,000 in total
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Collections, sets and memorabilia, including stamp collections, collector’s pins, medals and currency no longer in circulation
+                    </td>
+                    <td>
+                        $5,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Commercially produced audio and video media, and computer and game console software
+                    </td>
+                    <td>
+                        $1,000 in total
+                    </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>Uninstalled building fittings, fixtures and materials but only when kept in a locked and secured building at the insured address</td>
+                    <td></td>
+                    <td></td>
+                    <td>$1500</td>
+                </tr>
+             
+            </table>
+          </div>
+          <div class="hidden" id="tab-Suncorp">
+            <table class="styled-table">
+                <th>
+                    Fixed Limits
+                </th>
+                <th>
+                    Classic
+                </th>
+                <th>
+                    Classic Extras
+                </th>
+                <th>
+                    Classic Advantages
+                </th>
+                <th>
+                    Landlord
+                </th>
+                <th>
+                    Strata
+                </th>
+                <tr>
+                    <td>Tools of Trade - (Any tool used to make an income)</td>
+                    <td>$1000</td>
+                    <td>$2000</td>
+                    <td>$5000</td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>Food Spoilage</td>
+                    <td>$500</td>
+                    <td>$1000</td>
+                    <td>$2000</td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fencing
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                    <td>
+                         
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Sealed driveways and sealed roads
+                    </td>
+                    <td>
+                        Up to 500 metres
+                    </td>
+                    <td>
+                        Up to 500 metres
+                    </td>
+                    <td>
+                        Up to 500 metres
+                    </td>
+                    <td>
+                        Up to 500 metres
+                    </td>
+                    <td>
+                         
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Uninstalled building fixtures, fittings and materials  
+                    </td>
+                    <td>
+                        $500
+                    </td>
+                    <td>
+                        $1000
+                    </td>
+                    <td>
+                        $2000
+                    </td>
+                    <td>
+                        $500
+                    </td>
+                    <td>
+                        $1500
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Jewellery and watches</td>
+                    <td>$2,000 per item or set up to a total of $5,000</td>
+                    <td>$3,000 per item or set up to a total of $10,000</td>
+                    <td>$10,000 per item or set up to a total of $40,000</td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>
+                        Paintings, pictures, works of art, antiques, sculptures, ornaments and art objects
+                    </td>
+                    <td>
+                        $10,000 per item or set up to a total of $50,000
+                    </td>
+                    <td>
+                        $20,000 per item or set up to a total of $80,000
+                    </td>
+                    <td>
+                        $200,000 in total
+                    </td>
+                    <td>
+                        Up to $2,000 for each item or set up to $10,000 in total
+                    </td>
+                    <td>
+                         
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Carpet or rugs that are hand woven or hand knotted
+                    </td>
+                    <td>
+                        $2,000 per carpet or rug
+                    </td>
+                    <td>
+                        $5,000 per carpet or rug
+                    </td>
+                    <td>
+                        Contents sum insured
+                    </td>
+                    <td>
+                        $2,000 per carpet or rug
+                    </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>
+                        Collections, sets and memorabilia, including, stamp collections, collectors pins, medals and currency no longer in circulation
+                    </td>
+                    <td>
+                        $2,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td>
+                        $5,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td>
+                        $50,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td>
+                         
+                    </td>
+                    <td>
+                         
+                    </td>
+                </tr>
+             
+            </table>
+          </div>
+          <div class="hidden" id="tab-APIA">
+            <table class="styled-table">
+                <th>
+                    Fixed Limits
+                </th>
+                <th>
+                    Regular
+                </th>
+                <th>
+                    Regular - Extra
+                </th>
+                <th>
+                    Other APIA policies 
+                </th>
+                <th>
+                    Landlord
+                </th>
+                <tr>
+                    <td>
+                        Uninstalled building fixtures, fittings and materials  
+                    </td>
+                    <td>
+                        $1000
+                    </td>
+                    <td>
+                        $1000
+                    </td>
+                    <td>
+                        $1000
+                    </td>
+                    <td>
+                        $1000
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tools of Trade - (Any tool used to make an income)</td>
+                    <td>$3000</td>
+                    <td>$3000</td>
+                    <td>$3000</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>Food Spoilage</td>
+                    <td>$750</td>
+                    <td>$1000</td>
+                    <td>$750</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>Contents in open air</td>
+                    <td>20%</td>
+                    <td>20%</td>
+                    <td>20%</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>Jewellery and watches</td>
+                    <td>
+                        $2,000 per item or set up to a total of $5,000
+                    </td>
+                    <td>
+                        $2,500 per item or set but not more than 20% of the contents sum insured in total
+                    </td>
+                    <td>
+                        $2,000 per item or set up to a total of $5,000
+                    </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>
+                        Paintings, pictures, works of art, antiques, sculptures, ornaments and art objects
+                    </td>
+                    <td>
+                        $2,000 per item or set but not more than 20% of the contents sum insured in total
+                    </td>
+                    <td>
+                        $3,000 for each item or set but not more than 20% of the contents sum insured in total
+                    </td>
+                    <td>
+                        $2,000 per item or set but not more than 20% of the contents sum insured in total
+                    </td>
+                    <td>
+                        $1,000 for each item or set but not more than 10% of the contents sum insured in total
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Collections, sets and memorabilia, including stamp collections, collector’s pins, medals and currency no longer in circulation
+                    </td>
+                    <td>
+                        $3,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td>
+                        $3,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td>
+                        $3,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>Carpets or rugs that are hand woven</td>
+                    <td>$2000 per carpet or rug</td>
+                    <td>$3000 per carpet or rug</td>
+                    <td>$2000 per carpet or rug</td>
+                    <td>$1000 per carpet or rug</td>
+                </tr>
+             
+            </table>
+          </div>
+          <div class="hidden" id="tab-Shannnons">
+            <table class="styled-table">
+                <th>
+                    Limits
+                </th>
+                <th>Regular</th>
+                <tr>
+                    <td>Uninstalled home building fittings, fixtures and materials</td>
+                    <td>$1000</td>
+                </tr>
+                <tr>
+                    <td>Tools of Trade - (Any tool used to make an income)</td>
+                    <td>$3000</td>
+                </tr>
+                <tr>
+                    <td>Food Spoilage</td>
+                    <td>$1000</td>
+                </tr>
+                <tr>
+                    <td>Contents in open air</td>
+                    <td>20% sum insured</td>
+                </tr>
+                <tr>
+                    <td>
+                        Cash, smart cards, phone cards, documents able to be cashed or traded, vouchers, money orders or stamps 
+                    </td>
+                    <td>
+                        $500
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jewellery and watches</td>
+                    <td>$2,000 per item or set</td>
+                </tr>
+                <tr>
+                    <td>
+                        Paintings, pictures, works of art, antiques, sculptures, ornaments and art objects
+                    </td>
+                    <td>
+                        $5000 per item or set
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Collections, sets and memorabilia, including stamp collections, collector’s pins, medals and currency no longer in circulation
+                    </td>
+                    <td>
+                        Up to $3,000 per collection, set or memorabilia item
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Carpets or rugs that are hand woven or hand knotted
+                    </td>
+                    <td>
+                        $2000 in total
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Commercially produced audio and video media, and computer and game console software
+                    </td>
+                    <td>
+                        $3,000 in total
+                    </td>
+                </tr>
+             
+            </table>
+          </div>
+          <div class="hidden" id="tab-GIO">
+            <table class="styled-table">
+                <th>
+                    Limits
+                </th>
+                <th>
+                    Classic
+                </th>
+                <th>
+                    Classic Extras
+                </th>
+                <th>
+                    Platinum
+                </th>
+                <th>
+                    Landlord
+                </th>   
+                <th>
+                    Strata
+                </th>
+                <tr>
+                    <td>Tools of Trade - (Any tool used to make an income)</td>
+                    <td>$1000</td>
+                    <td>$2000</td>
+                    <td>$5000</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Food Spoilage</td>
+                    <td>$500</td>
+                    <td>$1000</td>
+                    <td>$2000</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Jewellery and watches</td>
+                    <td>$2,000 per item or set up to a total of $4,000</td>
+                    <td>$3,000 per item or set up to a total of $10,000</td>
+                    <td>$10,000 per item or set up to a total of $40,000</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Paintings, pictures, works of art, antiques, sculptures, ornaments and art objects
+                    </td>
+                    <td>
+                        $10,000 per item or set up to a total of $50,000
+                    </td>
+                    <td>
+                        $20,000 per item or set up to a total of $80,000
+                    </td>
+                    <td>
+                        $200,000 in total
+                    </td>
+                    <td>Up to $2,000 for each item or set up to $10,000 in total</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Carpet or rugs that are hand woven or hand knotted
+                    </td>
+                    <td>
+                        $2,000 per carpet or rug
+                    </td>
+                    <td>
+                        $5,000 per carpet or rug
+                    </td>
+                    <td>
+                        Contents sum insured
+                    </td>
+                    <td> $2,000 per carpet or rug</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Collections, sets and memorabilia, including, stamp collections, collectors pins, medals and currency no longer in circulation
+                    </td>
+                    <td>
+                        $2,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td>
+                        $5,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td>
+                        $50,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Uninstalled building fixtures, fittings and materials</td>
+                    <td>$500</td>
+                    <td>$1000</td>
+                    <td>$2000</td>
+                    <td>$500</td>
+                    <td>$1500</td>
+                </tr>
+             
+            </table>
+          </div>
+          <div class="hidden" id="tab-CIL">
+            <table class="styled-table">
+                <th>
+                    Limits
+                </th>
+                <th>Regular</th>
+                <tr>
+                    <td>High Risk Items: <br>
+                        • any curios, collections of stamps, medals, coins, or other collectables that are sold or issued as part of a set or collection;<br>
+                        • any portable musical instrument;<br>
+                        • contact lenses, hearing aids, prosthetic or dental aids;<br>
+                        • any watches, or pieces of jewellery, gems; or <br>
+                        • any items made of or containing gold or silver.</td>
+                    <td>$1500 for any one item</td>
+                </tr>
+                <tr>
+                    <td>Food Spoilage</td>
+                    <td>$500</td>
+                </tr>
+                <tr>
+                    <td>Office Equipment</td>
+                    <td>$1000 in total but no more than 10% of the sum insured</td>
+                </tr>
+                <tr>
+                    <td>Contents used for business and tools of trade</td>
+                    <td>$1000 in total but no more than 10% of the sum insured</td>
+                </tr>
+                <tr>
+                    <td>
+                        Cash, smart cards, phone cards, documents able to be cashed or traded, vouchers, tickets or money orders
+                    </td>
+                    <td>
+                        $500
+                    </td>
+                </tr>
+             
+            </table>
+          </div>
+          <div class="hidden" id="tab-Vero">
+            <table class="styled-table">
+                <th>
+                    Limits
+                </th>
+                <th>
+                    Home Elite
+                </th>
+                <th>
+                    Home Extra
+                </th>
+                <th>
+                    Landlord
+                </th>
+                <tr>
+                    <td>
+                        Uninstalled building fixtures, fittings and materials  
+                    </td>
+                    <td>
+                        $500
+                    </td>
+                    <td>
+                        $500
+                    </td>
+                    <td>
+                        $500
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fencing
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                    <td>
+                        2km
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sealed driveways and sealed roads</td>
+                    <td>500 metres</td>
+                    <td>500 metres</td>
+                    <td>500 metres</td>
+                </tr>
+                <tr>
+                    <td>Tools of Trade - (Any tool used to make an income)</td>
+                    <td>$5000</td>
+                    <td>$5000</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Food Spoilage</td>
+                    <td>$1000</td>
+                    <td>$1000</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Contents in open air</td>
+                    <td>25%</td>
+                    <td>25%</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td>Uncut and unset gems, gold or silver nuggets, bullion and ingots (not jewellery)</td>
+                    <td>Up to $2,000 in total.</td>
+                    <td>Up to $2,000 in total.</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Cash, smart cards, phone cards, documents able to be cashed or traded, vouchers, tickets, money orders or stamps (not in a set or collection)</td>
+                    <td>$500</td>
+                    <td>$500</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Jewellery and watches</td>
+                    <td>
+                        $2,000 per item or set up to a total of $8,000
+                    </td>
+                    <td>
+                        $2,000 per item or set up to a total of $8,000
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Paintings, pictures, works of art, antiques, sculptures, ornaments and art objects
+                    </td>
+                    <td>
+                        $10,000 per item or set but not more than $50,000 in total
+                    </td>
+                    <td>
+                        $10,000 per item or set but not more than $50,000 in total
+                    </td>
+                    <td>
+                        $10,000 per item or set but not more than $50,000 in total
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Collections, sets and memorabilia, including stamp collections, collector’s pins, medals and currency no longer in circulation
+                    </td>
+                    <td>
+                        $5,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td>
+                        $5,000 in total for all collections, sets and memorabilia
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>Carpets or rugs that are hand woven</td>
+                    <td>$2000 per carpet or rug</td>
+                    <td>$2000 per carpet or rug</td>
+                    <td>$2000 per carpet or rug</td>
+                </tr>
+             
+            </table>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        function changeActiveTab(event, tabID) {
+          let element = event.target;
+          while (element.nodeName !== "A") {
+            element = element.parentNode;
+          }
+          ulElement = element.parentNode.parentNode;
+          aElements = ulElement.querySelectorAll("li > a");
+          tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
+          for (let i = 0; i < aElements.length; i++) {
+            console.log(tabContents[i]);
+            aElements[i].classList.remove("bg-white");
+            aElements[i].classList.add("bg-gray");
+            tabContents[i].classList.add("hidden");
+            tabContents[i].classList.remove("block");
+          }
+          element.classList.remove("bg-gray");
+          element.classList.add("bg-white");
+          document.getElementById(tabID).classList.remove("hidden");
+          document.getElementById(tabID).classList.add("block");
+        }
+      </script> {% endblock %}

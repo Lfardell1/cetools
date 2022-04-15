@@ -1,0 +1,88 @@
+{% extends 'Resourcebase.html' %}
+{% block content %}
+<div class="w-full h-1000 m-8 overflow-y-auto">
+    <div class="flex gap-4">
+            <div class="w-1/4 overflow-x-auto h-full ">
+                    <input class="border p-1 m-2" type="text" name="Name" id="Name" value="Apple">
+                    <input class="border p-1 m-2" type="text" name="Price" id="Price" value="50">
+                    <input class="border p-1 m-2" type="text" name="Variable" id="Variable" value="23">
+                    <input class="border p-1 m-2" type="text" name="Units" id="Units" value="5000">
+                    <button class="btn btn-light m-2" onclick=AddProduct()>Add Product</button>
+
+                    <input class="border p-1 m-2" type="text" name="Name" id="" value="Enter The fixed costs">
+                    <input class="border p-1 m-2" type="text" name="Price" id="" value="Enter">
+                    <button class="btn btn-light m-2">Calculate</button>
+
+                    <p id="WACM"></p>
+                    <p id="TotalSales"></p>
+             </div>
+             <div class="w-1/2 h-full justify-center" id="Products"></div>
+        </div>
+
+
+        
+    </div>
+</div>
+</div>
+
+<script>
+
+    Products = [];
+
+    WACM = 0;
+
+    function AddProduct(){
+        Products.push([document.getElementById("Name").value, document.getElementById("Price").value,document.getElementById("Variable").value,document.getElementById("Units").value , (parseInt(document.getElementById("Price").value) - document.getElementById("Variable").value)]);
+        UpdateList();
+    }
+
+    function UpdateList(){
+
+        document.getElementById("Products").innerHTML = ""
+
+        for (var i = 0; i < Products.length; i++ ){
+            console.log(Products[i]);
+            div = document.getElementById("Products");
+            div.setAttribute('class' , '')
+            listitem = document.createElement("div");
+            listitem.setAttribute('class' , 'bg-gray-300 p-10 m-4 rounded-md');
+      
+            listitem.innerHTML = "<b> Name </b>  " + Products[i][0] + "<b> Selling price </b> " + Products[i][1] + "<b> Variable costs</b> " + Products[i][2]+ " <b> Units Sold </b> "  + Products[i][3] + "<b> Contribution Margin </b> " +  Products[i][4]  + "   <button class='btn btn-dark' onclick=RemoveProduct("+ i +")>Delete</button>";
+            div.appendChild(listitem)
+        }
+        calculate();
+        
+    }
+
+    function RemoveProduct(i){
+        
+        Products.splice(i,1);
+        UpdateList();
+
+
+
+    }
+
+    function calculate(){
+
+        Totalsales = 0
+
+        for (var i = 0; i < Products.length; i++){
+            Totalsales += parseInt(Products[i][3])
+        }
+
+        document.getElementById("TotalSales").innerHTML = "Total Sales: " + Totalsales;
+
+        for (i = 0; i < Products.length; i++){
+           WACM = Products[i][4]*Products[i][3];
+        }
+        WACM = WACM / Totalsales;
+
+        document.getElementById("WACM").innerHTML = "WACM: " + WACM;
+
+
+    }
+    
+</script>
+{% endblock %}
+
